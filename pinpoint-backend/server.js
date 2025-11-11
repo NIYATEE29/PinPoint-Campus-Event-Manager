@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -18,10 +17,8 @@ mongoose.connect(MONGODB_URI, {
 }).then(() => console.log('✅ MongoDB Connected'))
   .catch(err => console.error('❌ MongoDB Error:', err));
 
-// JWT Secret
 const JWT_SECRET = 'your-secret-key-change-this-in-production';
 
-// User Schema
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String },
@@ -36,7 +33,6 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// Event Schema
 const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
   name: { type: String, required: true },

@@ -49,12 +49,12 @@ function App() {
       <div className="app">
         <nav className="navbar">
           <div className="nav-container">
-            <Link to="/" className="nav-logo">📍 PinPoint</Link>
+            <Link to="/" className="nav-logo"> PinPoint</Link>
             <div className="nav-links">
               <Link to="/">Home</Link>
               <Link to="/map">Map</Link>
               <Link to="/clubs">Clubs</Link>
-              <Link to="/live">🔴 Live Events</Link>
+              <Link to="/live"> Live Events</Link>
               <Link to="/profile">My Profile</Link>
               <Link to="/about">About</Link>
               <Link to="/contact">Contact</Link>
@@ -82,7 +82,7 @@ function App() {
                           fontWeight: 'bold',
                         }}
                       >
-                        🚪 Logout
+                         Logout
                       </button>
 
                   </div>

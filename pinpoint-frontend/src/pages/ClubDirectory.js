@@ -14,17 +14,13 @@ export default function ClubDirectory() {
 
   const loadClubs = async () => {
     try {
-      // Load all organizers
       const clubsData = await clubsAPI.getAll();
       setClubs(clubsData);
       
-      // Load all events
       const eventsData = await eventsAPI.getAll();
       
-      // Group events by organizer ID
       const eventsByOrganizer = {};
       eventsData.forEach(event => {
-        // Handle both populated and non-populated organizerId
         const orgId = event.organizerId?._id || event.organizerId;
         
         if (!eventsByOrganizer[orgId]) {
@@ -112,7 +108,6 @@ export default function ClubDirectory() {
       ) : (
         <div className="grid">
           {filteredClubs.map((club) => {
-            // Get events for this club using the club's _id
             const clubEventsList = clubEvents[club._id] || [];
             
             // Filter for upcoming events only
@@ -233,7 +228,7 @@ export default function ClubDirectory() {
             </button>
             
             <div style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '1rem' }}>
-              🏛️
+              
             </div>
             <h2 style={{ textAlign: 'center', marginBottom: '0.5rem', color: '#666' }}>
               {selectedClub.organization || `${selectedClub.firstName}'s Club`}
@@ -247,10 +242,10 @@ export default function ClubDirectory() {
             
             <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
               <div style={{ display: 'inline-block', backgroundColor: '#3498db', color: 'white', padding: '0.5rem 1rem', borderRadius: '20px', marginRight: '0.5rem' }}>
-                📅 {selectedClub.allEvents?.length || 0} Total Events
+                 {selectedClub.allEvents?.length || 0} Total Events
               </div>
               <div style={{ display: 'inline-block', backgroundColor: '#27ae60', color: 'white', padding: '0.5rem 1rem', borderRadius: '20px' }}>
-                ⏰ {selectedClub.events?.length || 0} Upcoming
+                 {selectedClub.events?.length || 0} Upcoming
               </div>
             </div>
             
@@ -266,15 +261,15 @@ export default function ClubDirectory() {
               selectedClub.events?.map((event) => (
                 <div key={event._id} className="card" style={{ marginBottom: '1rem' }}>
                   <h4>{event.title}</h4>
-                  <p><strong>📍 Location:</strong> Room {event.room}, Block {event.block}</p>
-                  <p><strong>🏛️ Campus:</strong> {event.campus}</p>
-                  <p><strong>🏷️ Category:</strong> {event.category}</p>
-                  <p><strong>📝 Description:</strong> {event.description}</p>
+                  <p><strong> Location:</strong> Room {event.room}, Block {event.block}</p>
+                  <p><strong> Campus:</strong> {event.campus}</p>
+                  <p><strong> Category:</strong> {event.category}</p>
+                  <p><strong> Description:</strong> {event.description}</p>
                   {event.startTime && (
                     <>
-                      <p><strong>📅 Date:</strong> {formatDate(event.startTime)}</p>
+                      <p><strong> Date:</strong> {formatDate(event.startTime)}</p>
                       {event.startTime && (
-                        <p><strong>🕐 Time:</strong> {new Date(event.startTime).toLocaleTimeString()}</p>
+                        <p><strong> Time:</strong> {new Date(event.startTime).toLocaleTimeString()}</p>
                       )}
                       <div style={{
                         display: 'inline-block',
@@ -286,7 +281,7 @@ export default function ClubDirectory() {
                         fontWeight: 'bold',
                         marginTop: '0.5rem'
                       }}>
-                        ⏰ {getDaysUntil(event.startTime)}
+                        {getDaysUntil(event.startTime)}
                       </div>
                     </>
                   )}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { authAPI } from '../api/api';
 
 export default function Register({ onLogin }) {
-  const navigate = useNavigate(); // Move to top!
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,7 +18,7 @@ export default function Register({ onLogin }) {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (user && user.email) {
-      navigate('/'); // Already logged in, redirect to home
+      navigate('/'); 
     }
   }, [navigate]);
 

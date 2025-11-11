@@ -27,14 +27,13 @@ export default function CreateEvent({ user }) {
     e.preventDefault();
     
     if (!user || user.userType !== 'organizer') {
-      alert('❌ Only organizers can create events!');
+      alert(' Only organizers can create events!');
       return;
     }
 
     setLoading(true);
 
     try {
-      // Combine date and time
       const startDateTime = formData.startDate && formData.startTime 
         ? new Date(`${formData.startDate}T${formData.startTime}`)
         : null;
@@ -59,10 +58,10 @@ export default function CreateEvent({ user }) {
 
       await eventsAPI.create(eventData);
       
-      alert('✅ Event created successfully!');
+      alert('Event created successfully!');
       navigate('/map');
     } catch (error) {
-      alert('❌ Error creating event: ' + error.message);
+      alert('Error creating event: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -71,7 +70,7 @@ export default function CreateEvent({ user }) {
   if (!user || user.userType !== 'organizer') {
     return (
       <div className="page">
-        <h1>❌ Access Denied</h1>
+        <h1> Access Denied</h1>
         <p>Only organizers can create events.</p>
         <button className="btn btn-primary" onClick={() => navigate('/')}>
           Go Home

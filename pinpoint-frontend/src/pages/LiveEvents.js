@@ -41,13 +41,13 @@ export default function LiveEvents() {
 
     if (start <= now && (!end || now <= end)) {
       const diff = Math.floor((now - start) / 60000);
-      return { status: 'live', label: '🔴 LIVE NOW', color: '#e74c3c' };
+      return { status: 'live', label: 'LIVE NOW', color: '#e74c3c' };
     } else if (start > now) {
       const diff = Math.floor((start - now) / 60000);
       if (diff < 60) {
-        return { status: 'soon', label: `⏰ Starting in ${diff}m`, color: '#f39c12' };
+        return { status: 'soon', label: ` Starting in ${diff}m`, color: '#f39c12' };
       }
-      return { status: 'soon', label: `⏰ Starting soon`, color: '#f39c12' };
+      return { status: 'soon', label: ` Starting soon`, color: '#f39c12' };
     } else {
       return { status: 'ended', label: '✓ Ended', color: '#95a5a6' };
     }
@@ -72,29 +72,29 @@ export default function LiveEvents() {
 
   const handleJoinEvent = async (eventId) => {
     if (joinedEvents.includes(eventId)) {
-      alert('✅ You already joined this event!');
+      alert('You already joined this event!');
       return;
     }
 
     try {
       await eventsAPI.join(eventId);
       setJoinedEvents([...joinedEvents, eventId]);
-      loadEvents(); // Reload to update attendee count
-      alert('✅ You joined the event! See you there!');
+      loadEvents();
+      alert(' You joined the event! See you there!');
     } catch (error) {
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
   const handleRemindMe = (eventId) => {
     if (reminders.includes(eventId)) {
-      alert('🔔 You already set a reminder for this event!');
+      alert('You already set a reminder for this event!');
       return;
     }
 
     setReminders([...reminders, eventId]);
     const event = events.find(e => e._id === eventId);
-    alert(`🔔 Reminder set!\n\nYou'll be notified before "${event.title}" starts.`);
+    alert(`Reminder set!\n\nYou'll be notified before "${event.title}" starts.`);
   };
 
   const addToCalendar = (event) => {
@@ -102,7 +102,7 @@ export default function LiveEvents() {
     const startTime = event.startTime ? new Date(event.startTime).toTimeString().split(' ')[0] : 'TBD';
     const endTime = event.endTime ? new Date(event.endTime).toTimeString().split(' ')[0] : 'TBD';
     
-    alert(`✅ Added to calendar!\n\nEvent: ${event.title}\nDate: ${startDate}\nTime: ${startTime} - ${endTime}\nLocation: Room ${event.room}, Block ${event.block}`);
+    alert(`Added to calendar!\n\nEvent: ${event.title}\nDate: ${startDate}\nTime: ${startTime} - ${endTime}\nLocation: Room ${event.room}, Block ${event.block}`);
   };
 
   const liveEvents = events.filter(e => getEventStatus(e).status === 'live');
@@ -111,7 +111,7 @@ export default function LiveEvents() {
   if (loading) {
     return (
       <div className="page">
-        <h1>🔴 Live & Upcoming Events</h1>
+        <h1> Live & Upcoming Events</h1>
         <p>Loading events...</p>
       </div>
     );
@@ -119,13 +119,13 @@ export default function LiveEvents() {
 
   return (
     <div className="page">
-      <h1>🔴 Live & Upcoming Events</h1>
+      <h1>Live & Upcoming Events</h1>
       <p style={{ color: '#666', marginBottom: '2rem' }}>Current time: {currentTime.toLocaleTimeString()}</p>
 
       {/* LIVE NOW SECTION */}
       {liveEvents.length > 0 && (
         <div style={{ marginBottom: '3rem' }}>
-          <h2 style={{ color: '#e74c3c', marginBottom: '1rem' }}>🔴 Events Happening Now! ({liveEvents.length})</h2>
+          <h2 style={{ color: '#e74c3c', marginBottom: '1rem' }}> Events Happening Now! ({liveEvents.length})</h2>
           <div className="grid">
             {liveEvents.map((event) => {
               const eventStatus = getEventStatus(event);
@@ -148,9 +148,9 @@ export default function LiveEvents() {
                   </div>
 
                   <h3>{event.title}</h3>
-                  <p><strong>📍 Location:</strong> Room {event.room}, Block {event.block}</p>
-                  <p><strong>🏷️ Category:</strong> {event.category}</p>
-                  <p><strong>📝 Description:</strong> {event.description}</p>
+                  <p><strong> Location:</strong> Room {event.room}, Block {event.block}</p>
+                  <p><strong> Category:</strong> {event.category}</p>
+                  <p><strong> Description:</strong> {event.description}</p>
                   
                   {/* Timeline */}
                   {event.startTime && event.endTime && (
@@ -161,10 +161,10 @@ export default function LiveEvents() {
                       marginBottom: '1rem',
                     }}>
                       <p style={{ margin: '0.5rem 0', fontSize: '0.9rem', color: '#666' }}>
-                        <strong>⏱️ Started:</strong> {new Date(event.startTime).toLocaleTimeString()}
+                        <strong> Started:</strong> {new Date(event.startTime).toLocaleTimeString()}
                       </p>
                       <p style={{ margin: '0.5rem 0', fontSize: '0.9rem', color: '#666' }}>
-                        <strong>⏰ Ends:</strong> {new Date(event.endTime).toLocaleTimeString()}
+                        <strong> Ends:</strong> {new Date(event.endTime).toLocaleTimeString()}
                       </p>
                       <p style={{ 
                         margin: '0.5rem 0', 
@@ -172,7 +172,7 @@ export default function LiveEvents() {
                         fontWeight: 'bold',
                         color: '#e74c3c',
                       }}>
-                        ⏳ {getTimeRemaining(event)}
+                         {getTimeRemaining(event)}
                       </p>
                     </div>
                   )}
@@ -240,9 +240,9 @@ export default function LiveEvents() {
                   </div>
 
                   <h3>{event.title}</h3>
-                  <p><strong>📍 Location:</strong> Room {event.room}, Block {event.block}</p>
-                  <p><strong>🏷️ Category:</strong> {event.category}</p>
-                  <p><strong>📝 Description:</strong> {event.description}</p>
+                  <p><strong> Location:</strong> Room {event.room}, Block {event.block}</p>
+                  <p><strong> Category:</strong> {event.category}</p>
+                  <p><strong> Description:</strong> {event.description}</p>
                   
                   {/* Timeline */}
                   {event.startTime && (
@@ -253,11 +253,11 @@ export default function LiveEvents() {
                       marginBottom: '1rem',
                     }}>
                       <p style={{ margin: '0.5rem 0', fontSize: '0.9rem' , color: '#666'}}>
-                        <strong>🕐 Starts:</strong> {new Date(event.startTime).toLocaleTimeString()}
+                        <strong> Starts:</strong> {new Date(event.startTime).toLocaleTimeString()}
                       </p>
                       {event.endTime && (
                         <p style={{ margin: '0.5rem 0', fontSize: '0.9rem', color: '#666' }}>
-                          <strong>🕑 Ends:</strong> {new Date(event.endTime).toLocaleTimeString()}
+                          <strong> Ends:</strong> {new Date(event.endTime).toLocaleTimeString()}
                         </p>
                       )}
                     </div>
@@ -304,7 +304,7 @@ export default function LiveEvents() {
       {/* NO EVENTS */}
       {liveEvents.length === 0 && upcomingEvents.length === 0 && (
         <div style={{ textAlign: 'center', padding: '3rem', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
-          <p style={{ fontSize: '1.2rem', color: '#666' }}>😴 No events live or starting soon</p>
+          <p style={{ fontSize: '1.2rem', color: '#666' }}> No events live or starting soon</p>
           <p style={{ color: '#999' }}>All events need start/end times to show here. Create events with timestamps!</p>
         </div>
       )}

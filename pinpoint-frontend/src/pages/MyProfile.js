@@ -23,15 +23,12 @@ export default function MyProfile() {
 
   const loadUserData = async () => {
     try {
-      // Load saved events
       const saved = await userAPI.getSavedEvents();
       setSavedEvents(saved);
 
-      // Load joined events
       const joined = await userAPI.getJoinedEvents();
       setJoinedEvents(joined);
 
-      // Load created events (if organizer)
       if (user.userType === 'organizer') {
         const created = await userAPI.getMyEvents();
         setMyEvents(created);
@@ -44,11 +41,9 @@ export default function MyProfile() {
     }
   };
 
-  // Generate recent activity from real data
   const getRecentActivity = () => {
     const activities = [];
 
-    // Add joined events
     joinedEvents.slice(0, 3).forEach(event => {
       activities.push({
         id: `joined-${event._id}`,
@@ -59,7 +54,6 @@ export default function MyProfile() {
       });
     });
 
-    // Add saved events
     savedEvents.slice(0, 2).forEach(event => {
       activities.push({
         id: `saved-${event._id}`,
@@ -70,7 +64,6 @@ export default function MyProfile() {
       });
     });
 
-    // Add created events (if organizer)
     if (user.userType === 'organizer') {
       myEvents.slice(0, 2).forEach(event => {
         activities.push({
@@ -104,15 +97,15 @@ export default function MyProfile() {
       setUser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
       setIsEditing(false);
-      alert('✅ Profile updated successfully!');
+      alert(' Profile updated successfully!');
     } catch (error) {
-      alert('❌ Error updating profile: ' + error.message);
+      alert(' Error updating profile: ' + error.message);
     }
   };
 
   const handleChangePassword = (e) => {
     e.preventDefault();
-    alert('✅ Password changed successfully!');
+    alert(' Password changed successfully!');
   };
 
   const handleInputChange = (e) => {
@@ -131,7 +124,7 @@ export default function MyProfile() {
 
   return (
     <div className="page">
-      <h1>👤 My Profile</h1>
+      <h1> My Profile</h1>
 
       <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
         {/* Profile Information */}
@@ -189,7 +182,7 @@ export default function MyProfile() {
               )}
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>
-                  💾 Save Changes
+                   Save Changes
                 </button>
                 <button
                   type="button"
@@ -216,7 +209,7 @@ export default function MyProfile() {
                 style={{ width: '100%' }}
                 onClick={() => setIsEditing(true)}
               >
-                ✏️ Edit Profile
+                 Edit Profile
               </button>
             </div>
           )}
@@ -242,7 +235,7 @@ export default function MyProfile() {
               <input type="password" placeholder="Confirm new password" required />
             </div>
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-              🔒 Change Password
+               Change Password
             </button>
           </form>
 
@@ -252,7 +245,7 @@ export default function MyProfile() {
             {user.userType === 'student' ? (
               <>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0' }}>
-                  <span>⭐ Saved Events:</span>
+                  <span> Saved Events:</span>
                   <strong>{stats.savedEvents}</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0' }}>
@@ -260,7 +253,7 @@ export default function MyProfile() {
                   <strong>{stats.eventsAttended}</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0' }}>
-                  <span>📅 Member Since:</span>
+                  <span> Member Since:</span>
                   <strong>2025</strong>
                 </div>
               </>
@@ -271,11 +264,11 @@ export default function MyProfile() {
                   <strong>{stats.eventsCreated}</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0' }}>
-                  <span>👥 Total Attendees:</span>
+                  <span> Total Attendees:</span>
                   <strong>{stats.totalAttendees}</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0' }}>
-                  <span>🏛️ Organization:</span>
+                  <span> Organization:</span>
                   <strong>{formData.organization}</strong>
                 </div>
               </>
@@ -286,7 +279,7 @@ export default function MyProfile() {
 
       {/* Recent Activity */}
       <div className="card" style={{ marginTop: '2rem' }}>
-        <h2>📊 Recent Activity</h2>
+        <h2>Recent Activity</h2>
         
         {recentActivity.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -337,14 +330,14 @@ export default function MyProfile() {
 
       {/* Quick Actions */}
       <div className="card" style={{ marginTop: '2rem' }}>
-        <h2>⚡ Quick Actions</h2>
+        <h2> Quick Actions</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
           <button 
             className="btn btn-primary" 
             style={{ padding: '1rem' }}
             onClick={() => navigate('/map')}
           >
-            🗺️ Browse Events
+             Browse Events
           </button>
           {user.userType === 'organizer' ? (
             <button 
@@ -360,7 +353,7 @@ export default function MyProfile() {
               style={{ padding: '1rem', backgroundColor: '#f39c12' }}
               onClick={() => navigate('/saved-events')}
             >
-              ⭐ View Saved Events
+               View Saved Events
             </button>
           )}
           <button 
@@ -368,7 +361,7 @@ export default function MyProfile() {
             style={{ padding: '1rem', backgroundColor: '#9b59b6' }}
             onClick={() => navigate('/live')}
           >
-            🔔 Live Events
+             Live Events
           </button>
         </div>
       </div>

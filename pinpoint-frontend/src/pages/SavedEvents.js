@@ -25,7 +25,7 @@ export default function SavedEvents({ user }) {
   if (!user) {
     return (
       <div className="page">
-        <h1>❌ Access Denied</h1>
+        <h1> Access Denied</h1>
         <p>Please login to view saved events.</p>
         <button className="btn btn-primary" onClick={() => navigate('/login')}>
           Login
@@ -37,7 +37,7 @@ export default function SavedEvents({ user }) {
   if (loading) {
     return (
       <div className="page">
-        <h1>⭐ My Saved Events</h1>
+        <h1> My Saved Events</h1>
         <p>Loading...</p>
       </div>
     );
@@ -45,7 +45,7 @@ export default function SavedEvents({ user }) {
 
   return (
     <div className="page">
-      <h1>⭐ My Saved Events</h1>
+      <h1> My Saved Events</h1>
       <p style={{ color: '#666', marginBottom: '2rem' }}>
         Events you've bookmarked for later
       </p>
@@ -89,17 +89,17 @@ export default function SavedEvents({ user }) {
                   fontSize: '0.85rem',
                   marginBottom: '1rem',
                 }}>
-                  ⭐ Saved
+                   Saved
                 </div>
                 
                 <h3>{event.title}</h3>
-                <p><strong>📍 Location:</strong> Room {event.room}, Block {event.block}</p>
-                <p><strong>🏛️ Campus:</strong> {event.campus}</p>
-                <p><strong>🏷️ Category:</strong> {event.category}</p>
-                <p><strong>📝 Description:</strong> {event.description}</p>
+                <p><strong> Location:</strong> Room {event.room}, Block {event.block}</p>
+                <p><strong> Campus:</strong> {event.campus}</p>
+                <p><strong> Category:</strong> {event.category}</p>
+                <p><strong> Description:</strong> {event.description}</p>
                 
                 {event.startTime && (
-                  <p><strong>📅 Starts:</strong> {new Date(event.startTime).toLocaleString()}</p>
+                  <p><strong> Starts:</strong> {new Date(event.startTime).toLocaleString()}</p>
                 )}
                 
                 <div style={{ 
@@ -119,7 +119,7 @@ export default function SavedEvents({ user }) {
                     onClick={() => navigate('/map')}
                     style={{ flex: 1 }}
                   >
-                    📍 View on Map
+                     View on Map
                   </button>
                   <button
                     className="btn btn-primary"
@@ -131,7 +131,7 @@ export default function SavedEvents({ user }) {
                       }
                     }}
                   >
-                    🗑️ Remove
+                     Remove
                   </button>
                 </div>
               </div>

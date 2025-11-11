@@ -1,5 +1,3 @@
-// src/api/api.js - API Service File
-
 const API_URL = 'http://localhost:5000/api';
 
 // Get token from localStorage
@@ -34,7 +32,6 @@ export const authAPI = {
 
 // Events API
 export const eventsAPI = {
-  // Get all events
   getAll: async () => {
     const response = await fetch(`${API_URL}/events`);
     const data = await response.json();
@@ -42,7 +39,6 @@ export const eventsAPI = {
     return data;
   },
 
-  // Get single event
   getById: async (id) => {
     const response = await fetch(`${API_URL}/events/${id}`);
     const data = await response.json();
@@ -50,7 +46,6 @@ export const eventsAPI = {
     return data;
   },
 
-  // Create event
   create: async (eventData) => {
     const response = await fetch(`${API_URL}/events`, {
       method: 'POST',
@@ -65,7 +60,6 @@ export const eventsAPI = {
     return data;
   },
 
-  // Update event
   update: async (id, eventData) => {
     const response = await fetch(`${API_URL}/events/${id}`, {
       method: 'PUT',
@@ -80,7 +74,6 @@ export const eventsAPI = {
     return data;
   },
 
-  // Delete event
   delete: async (id) => {
     const response = await fetch(`${API_URL}/events/${id}`, {
       method: 'DELETE',
@@ -93,7 +86,6 @@ export const eventsAPI = {
     return data;
   },
 
-  // Join event
   join: async (id) => {
     const response = await fetch(`${API_URL}/events/${id}/join`, {
       method: 'POST',
@@ -106,7 +98,7 @@ export const eventsAPI = {
     return data;
   },
 
-  // Save event
+
   save: async (id) => {
     const response = await fetch(`${API_URL}/events/${id}/save`, {
       method: 'POST',
@@ -122,7 +114,7 @@ export const eventsAPI = {
 
 // User API
 export const userAPI = {
-  // Get profile
+
   getProfile: async () => {
     const response = await fetch(`${API_URL}/user/profile`, {
       headers: {
@@ -134,7 +126,6 @@ export const userAPI = {
     return data;
   },
 
-  // Update profile
   updateProfile: async (userData) => {
     const response = await fetch(`${API_URL}/user/profile`, {
       method: 'PUT',
@@ -149,7 +140,6 @@ export const userAPI = {
     return data;
   },
 
-  // Get saved events
   getSavedEvents: async () => {
     const response = await fetch(`${API_URL}/user/saved-events`, {
       headers: {
@@ -161,7 +151,6 @@ export const userAPI = {
     return data;
   },
 
-  // Get joined events
   getJoinedEvents: async () => {
     const response = await fetch(`${API_URL}/user/joined-events`, {
       headers: {
@@ -173,7 +162,6 @@ export const userAPI = {
     return data;
   },
 
-  // Get my events (created)
   getMyEvents: async () => {
     const response = await fetch(`${API_URL}/user/my-events`, {
       headers: {
@@ -188,7 +176,6 @@ export const userAPI = {
 
 // Clubs API
 export const clubsAPI = {
-  // Get all clubs
   getAll: async () => {
     const response = await fetch(`${API_URL}/clubs`);
     const data = await response.json();

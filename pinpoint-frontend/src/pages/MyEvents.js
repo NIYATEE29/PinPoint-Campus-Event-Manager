@@ -29,17 +29,17 @@ export default function MyEvents({ user }) {
 
     try {
       await eventsAPI.delete(eventId);
-      alert('✅ Event deleted successfully!');
+      alert('Event deleted successfully!');
       loadMyEvents(); // Reload events
     } catch (error) {
-      alert('❌ Error deleting event: ' + error.message);
+      alert(' Error deleting event: ' + error.message);
     }
   };
 
   if (!user || user.userType !== 'organizer') {
     return (
       <div className="page">
-        <h1>❌ Access Denied</h1>
+        <h1> Access Denied</h1>
         <p>Only organizers can view this page.</p>
         <button className="btn btn-primary" onClick={() => navigate('/')}>
           Go Home
@@ -51,7 +51,7 @@ export default function MyEvents({ user }) {
   if (loading) {
     return (
       <div className="page">
-        <h1>📅 My Events</h1>
+        <h1> My Events</h1>
         <p>Loading...</p>
       </div>
     );
@@ -61,7 +61,7 @@ export default function MyEvents({ user }) {
 
   return (
     <div className="page">
-      <h1>📅 My Events</h1>
+      <h1> My Events</h1>
       <p style={{ color: '#666', marginBottom: '2rem' }}>
         Events you've created and organized
       </p>
@@ -133,20 +133,20 @@ export default function MyEvents({ user }) {
                   fontSize: '0.85rem',
                   marginBottom: '1rem',
                 }}>
-                  📅 Your Event
+                   Your Event
                 </div>
                 
                 <h3>{event.title}</h3>
-                <p><strong>📍 Location:</strong> Room {event.room}, Block {event.block}</p>
-                <p><strong>🏛️ Campus:</strong> {event.campus}</p>
-                <p><strong>🏷️ Category:</strong> {event.category}</p>
-                <p><strong>📝 Description:</strong> {event.description}</p>
+                <p><strong> Location:</strong> Room {event.room}, Block {event.block}</p>
+                <p><strong> Campus:</strong> {event.campus}</p>
+                <p><strong> Category:</strong> {event.category}</p>
+                <p><strong> Description:</strong> {event.description}</p>
                 
                 {event.startTime && (
                   <div style={{ marginTop: '1rem' }}>
-                    <p><strong>📅 Starts:</strong> {new Date(event.startTime).toLocaleString()}</p>
+                    <p><strong> Starts:</strong> {new Date(event.startTime).toLocaleString()}</p>
                     {event.endTime && (
-                      <p><strong>⏰ Ends:</strong> {new Date(event.endTime).toLocaleString()}</p>
+                      <p><strong> Ends:</strong> {new Date(event.endTime).toLocaleString()}</p>
                     )}
                   </div>
                 )}
@@ -168,24 +168,23 @@ export default function MyEvents({ user }) {
                     onClick={() => navigate('/map')}
                     style={{ flex: 1 }}
                   >
-                    📍 View on Map
+                     View on Map
                   </button>
                   <button
                     className="btn btn-primary"
                     style={{ flex: 1, backgroundColor: '#f39c12' }}
                     onClick={() => {
-                      // TODO: Navigate to edit page
                       alert('Edit feature coming soon!');
                     }}
                   >
-                    ✏️ Edit
+                     Edit
                   </button>
                   <button
                     className="btn btn-primary"
                     style={{ flex: 1, backgroundColor: '#e74c3c' }}
                     onClick={() => handleDeleteEvent(event._id)}
                   >
-                    🗑️ Delete
+                     Delete
                   </button>
                 </div>
               </div>

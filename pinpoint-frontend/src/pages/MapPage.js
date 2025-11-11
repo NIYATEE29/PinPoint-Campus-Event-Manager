@@ -38,7 +38,7 @@ export default function MapPage({ user }) {
   ];
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyB8RYyytUJTQHVJG1hDiAYF22xI2nltX0A', // Replace with your API Key
+    googleMapsApiKey: 'AIzaSyB8RYyytUJTQHVJG1hDiAYF22xI2nltX0A',
   });
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function MapPage({ user }) {
   const handleAddEvent = async (e) => {
     e.preventDefault();
     if (!user || user.userType !== 'organizer') {
-      alert('❌ Only organizers can create events!');
+      alert('Only organizers can create events!');
       return;
     }
     try {
@@ -92,7 +92,7 @@ export default function MapPage({ user }) {
         endTime: endDateTime,
       };
       await eventsAPI.create(eventData);
-      alert('✅ Event created successfully!');
+      alert('Event created successfully!');
       loadEvents();
       setShowAddEventForm(false);
       setFormData({
@@ -109,26 +109,26 @@ export default function MapPage({ user }) {
       });
       setPinPosition(campusCenter);
     } catch (error) {
-      alert('❌ Error creating event: ' + error.message);
+      alert('Error creating event: ' + error.message);
     }
   };
 
   const handleAttendEvent = async (eventId) => {
     if (!user) {
-      alert('❌ Please login to join events!');
+      alert(' Please login to join events!');
       return;
     }
     if (joinedEvents.includes(eventId)) {
-      alert('✅ You already joined this event!');
+      alert(' You already joined this event!');
       return;
     }
     try {
       await eventsAPI.join(eventId);
       setJoinedEvents([...joinedEvents, eventId]);
       loadEvents();
-      alert('✅ You joined the event!');
+      alert(' You joined the event!');
     } catch (error) {
-      alert('❌ Error joining event: ' + error.message);
+      alert(' Error joining event: ' + error.message);
     }
   };
 
@@ -143,7 +143,7 @@ export default function MapPage({ user }) {
       const shareText = `Check out this event: ${event.title}!\n\n${event.description}\n\nLocation: Room ${event.room}, Block ${event.block}\nCampus: ${event.campus}`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(shareText);
-        alert('✅ Event details copied to clipboard!');
+        alert(' Event details copied to clipboard!');
       } else {
         alert(shareText);
       }
@@ -163,7 +163,7 @@ export default function MapPage({ user }) {
   if (loading || !isLoaded) {
     return (
       <div className="page">
-        <h1>📍 Loading Map & Events...</h1>
+        <h1>Loading Map & Events...</h1>
       </div>
     );
   }
@@ -177,7 +177,7 @@ export default function MapPage({ user }) {
         <div style={{ flex: '1', minWidth: '300px' }}>
           <input
             type="text"
-            placeholder="🔍 Search events by name, block, or description..."
+            placeholder=" Search events by name, block, or description..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
@@ -195,7 +195,7 @@ export default function MapPage({ user }) {
             onClick={() => setShowAddEventForm(!showAddEventForm)}
             style={{ whiteSpace: 'nowrap' }}
           >
-            {showAddEventForm ? '❌ Cancel' : '➕ Add Event'}
+            {showAddEventForm ? ' Cancel' : '➕ Add Event'}
           </button>
         )}
       </div>
@@ -337,10 +337,10 @@ export default function MapPage({ user }) {
       {selectedMarker && (
         <div className="card" style={{ marginBottom: '2rem', backgroundColor: '#f0f8ff', borderLeft: '4px solid #3498db' }}>
           <h2>{selectedMarker.title}</h2>
-          <p><strong>📍 Location:</strong> Room {selectedMarker.room}, Block {selectedMarker.block}</p>
-          <p><strong>🏛️ Campus:</strong> {selectedMarker.campus}</p>
-          <p><strong>🏷️ Category:</strong> {selectedMarker.category}</p>
-          <p><strong>📝 Description:</strong> {selectedMarker.description}</p>
+          <p><strong>Location:</strong> Room {selectedMarker.room}, Block {selectedMarker.block}</p>
+          <p><strong>Campus:</strong> {selectedMarker.campus}</p>
+          <p><strong>Category:</strong> {selectedMarker.category}</p>
+          <p><strong>Description:</strong> {selectedMarker.description}</p>
           <p style={{ backgroundColor: '#3498db', color: 'white', padding: '0.5rem', borderRadius: '4px', textAlign: 'center' }}>
             👥 {selectedMarker.attendees} attending
           </p>
@@ -361,7 +361,7 @@ export default function MapPage({ user }) {
               style={{ flex: 1, backgroundColor: '#9b59b6' }}
               onClick={() => handleShareEvent(selectedMarker)}
             >
-              📤 Share
+              Share
             </button>
           </div>
         </div>
@@ -407,7 +407,7 @@ export default function MapPage({ user }) {
                     onClick={() => setSelectedMarker(event)}
                     style={{ flex: 1 }}
                   >
-                    📍 View on Map
+                     View on Map
                   </button>
                   <button
                     className="btn btn-primary"
