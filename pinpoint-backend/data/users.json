@@ -1,0 +1,22 @@
+[
+  {
+    "id": "user_001",
+    "email": "student@test.com",
+    "password": "password123",
+    "firstName": "Alex",
+    "lastName": "Student",
+    "userType": "student",
+    "organization": "",
+    "savedEvents": []
+  },
+  {
+    "id": "user_002",
+    "email": "organizer@test.com",
+    "password": "password123",
+    "firstName": "Jordan",
+    "lastName": "Organizer",
+    "userType": "organizer",
+    "organization": "Tech Club",
+    "savedEvents": []
+  }
+]

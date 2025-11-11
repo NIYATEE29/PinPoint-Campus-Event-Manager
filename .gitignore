@@ -1,0 +1,13 @@
+# Ignore all node_modules folders, wherever they are
+node_modules/
+
+# Ignore all .env files (SUPER IMPORTANT FOR SECURITY)
+# This hides your database password!
+.env
+
+# Ignore create-react-app build folder
+frontend/build/
+
+# Ignore Mac and Windows junk files
+.DS_Store
+npm-debug.log
