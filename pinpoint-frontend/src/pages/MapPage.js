@@ -38,7 +38,7 @@ export default function MapPage({ user }) {
   ];
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyB8RYyytUJTQHVJG1hDiAYF22xI2nltX0A',
+    googleMapsApiKey: 'API_KEY',
   });
 
   useEffect(() => {
