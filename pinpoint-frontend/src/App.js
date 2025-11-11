@@ -18,8 +18,18 @@ import LiveEvents from './pages/LiveEvents';
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+      const stored = localStorage.getItem('user');
+      return stored ? JSON.parse(stored) : null;
+    });
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [loadingUser, setLoadingUser] = useState(true);
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) setUser(JSON.parse(storedUser));
+      setLoadingUser(false);
+    }, []);
+
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -96,7 +106,11 @@ function App() {
             </div>
           </div>
         </nav>
-
+        
+        {loadingUser ? (
+          <div>Loading...</div>
+        ) : (
+          
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<MapPage user={user} token={token} />} />
@@ -104,14 +118,23 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onLogin={handleLogin} />} />
           <Route path="/clubs" element={<ClubDirectory />} />
-          <Route path="/create-event" element={user && user.userType === 'organizer' ? <CreateEvent token={token} /> : <Navigate to="/login" />} />
-          <Route path="/my-events" element={user && user.userType === 'organizer' ? <MyEvents token={token} /> : <Navigate to="/login" />} />
+          <Route path="/create-event" element={user && user?.userType === 'organizer' ? <CreateEvent token={token} /> : <Navigate to="/login" />} />
+          <Route
+              path="/my-events"
+              element={
+                user && user.email && user.userType === 'organizer'
+                  ? <MyEvents token={token} />
+                  : <Navigate to="/login" />
+              }
+            />
+
           <Route path="/saved-events" element={user && user.userType === 'student' ? <SavedEvents token={token} /> : <Navigate to="/login" />} />
           <Route path="/about" element={<About />} />
           <Route path="/live" element={<LiveEvents />} />
           <Route path="/profile" element={user ? <MyProfile /> : <Navigate to="/login" />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        )}
       </div>
     </Router>
   );
