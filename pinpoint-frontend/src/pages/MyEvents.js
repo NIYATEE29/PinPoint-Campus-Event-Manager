@@ -30,7 +30,7 @@ export default function MyEvents({ user }) {
     try {
       await eventsAPI.delete(eventId);
       alert('Event deleted successfully!');
-      loadMyEvents(); // Reload events
+      loadMyEvents(); 
     } catch (error) {
       alert(' Error deleting event: ' + error.message);
     }
@@ -169,15 +169,6 @@ export default function MyEvents({ user }) {
                     style={{ flex: 1 }}
                   >
                      View on Map
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    style={{ flex: 1, backgroundColor: '#f39c12' }}
-                    onClick={() => {
-                      alert('Edit feature coming soon!');
-                    }}
-                  >
-                     Edit
                   </button>
                   <button
                     className="btn btn-primary"
