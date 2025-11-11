@@ -170,7 +170,7 @@ export default function MapPage({ user }) {
 
   return (
     <div className="page">
-      <h1>🗺️ PES University Banashankari - Event Map</h1>
+      <h1> PES University - Event Map</h1>
 
       {/* SEARCH BAR */}
       <div style={{ marginBottom: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -297,7 +297,7 @@ export default function MapPage({ user }) {
             <div style={{ margin: "1rem 0" }}>
               <b>Click on the map to place your event pin, or drag the new blue pin to desired spot.</b>
             </div>
-            <button type="submit" className="btn btn-primary">✅ Create Event</button>
+            <button type="submit" className="btn btn-primary"> Create Event</button>
           </form>
         </div>
       )}
@@ -369,7 +369,7 @@ export default function MapPage({ user }) {
 
       {/* EVENTS LIST */}
       <div style={{ marginTop: '2rem' }}>
-        <h3>📋 All Events ({filteredEvents.length})</h3>
+        <h3> All Events ({filteredEvents.length})</h3>
         {filteredEvents.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '2rem', color: '#999' }}>
             <p>No events found. {user?.userType === 'organizer' && 'Create one to get started!'}</p>
@@ -425,7 +425,7 @@ export default function MapPage({ user }) {
                     style={{ flex: 1, backgroundColor: "#9b59b6" }}
                     onClick={() => handleShareEvent(event)}
                   >
-                    📤 Share
+                     Share
                   </button>
                 </div>
               </div>
