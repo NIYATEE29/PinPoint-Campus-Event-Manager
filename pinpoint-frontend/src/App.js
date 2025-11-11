@@ -65,9 +65,9 @@ function App() {
                 <div className="user-menu">
                   <span className="user-name">{user.firstName}</span>
                   <div className="dropdown">
-                    {user.userType === 'organizer' && <Link to="/create-event">Create Event</Link>}
-                    {user.userType === 'organizer' && <Link to="/my-events">My Events</Link>}
-                    {user.userType === 'student' && <Link to="/saved-events">Saved Events</Link>}
+                    {user?.userType === 'organizer' && <Link to="/create-event">Create Event</Link>}
+                    {user?.userType === 'organizer' && <Link to="/my-events">My Events</Link>}
+                    {user?.userType === 'student' && <Link to="/saved-events">Saved Events</Link>}
                     <hr style={{ margin: '0.5rem 0', border: 'none', borderTop: '1px solid #ddd' }} />
                       <button 
                         onClick={handleLogout} 
