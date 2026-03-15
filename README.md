@@ -84,3 +84,9 @@ npm start
 This project was built as part of a web development course project to practice **full-stack development using React and Node.js**.
 
 The idea was to create a simple platform where students can easily find and register for events happening across campus.
+
+
+##Contributers
+-Niyatee Singh 
+-Nikita Mankani
+-Nehaa Joshi
